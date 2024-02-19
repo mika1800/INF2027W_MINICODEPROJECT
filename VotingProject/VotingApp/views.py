@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.http import Http404
 from django.template import loader
 from django.urls import reverse
-from .models import Question, Choice #Importing question and choice classes from models
+from .models import Question, Choice, Choice_collection, Question_collection #Importing question and choice classes from models and collections for the no sql mongo DB
 
 #Function created to retrieve questions and displays those
 def index (request):
@@ -46,5 +46,10 @@ def vote(request, question_id):
     else:
         selected_choice.votes += 1
         selected_choice.save()
+        choices = {
+            'Question': question.question_text, #This is to 
+            'Choice': selected_choice.choice_text
+        }
+        Choice_collection.insert_one(choices)
         return HttpResponseRedirect(reverse('polls:results', args = (question.id,)))
     

@@ -1,4 +1,8 @@
 from django.db import models
+from .DatabaseConnection import database
+
+Question_collection = database['Questions']
+Choice_collection = database['Choices']
 
 #Creation of Question Class
 class Question(models.Model):
