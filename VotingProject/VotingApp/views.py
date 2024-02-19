@@ -5,8 +5,13 @@ from django.template import loader
 from django.urls import reverse
 from .models import Question, Choice, Choice_collection, Question_collection #Importing question and choice classes from models and collections for the no sql mongo DB
 
+
+
+
+
 #Function created to retrieve questions and displays those
 def index (request):
+
     recent_question_list = Question.objects.order_by('-pub_date')[:5] #Taking questions and ordering them by date but in reverse so most recent questions are displayed
     context = {'recent_question_list': recent_question_list}       
     return render(request, 'polls/index.html', context)  
@@ -47,7 +52,7 @@ def vote(request, question_id):
         selected_choice.votes += 1
         selected_choice.save()
         choices = {
-            'Question': question.question_text, #This is to 
+            'Question': question.question_text, #This is to mongobd
             'Choice': selected_choice.choice_text
         }
         Choice_collection.insert_one(choices)

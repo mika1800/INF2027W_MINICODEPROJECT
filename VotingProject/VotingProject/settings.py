@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'VotingApp',
-    'votingAppLandingPage'
+    'votingAppLandingPage',
+    'django_matplotlib'
 
 ]
 

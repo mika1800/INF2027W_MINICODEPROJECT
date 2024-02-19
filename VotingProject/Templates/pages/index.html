@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% if request.user.is_authenticated %}
+  <p>{{ request.user.username }}</p>
+  <a href="{% url 'logout' %}">Logout</a>
+{% else %}
+  <a href="{% url 'login' %}">Login</a>
+  <a href="{% url 'signup' %}">Signup</a>
+{% endif %}
+
+
 <div class="card text-center">  
     <div class="card-body" > 
        <h1> Welcome to Ballot Box!</h1>
@@ -8,5 +17,15 @@
     <a class="btn btn-dark" href = "{% url 'polls:index' %}"> 
         View Available Polls! </a>   
     </div>
+
+
+
+
+
 </div>
+
+
+
+
+
 {% endblock %}
