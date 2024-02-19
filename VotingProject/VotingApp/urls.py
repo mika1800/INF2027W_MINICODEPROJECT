@@ -3,7 +3,7 @@ from .import views
 
 
 #Defines routing for functions implemented in views.py
-app_name = 'VotingApp'
+app_name = 'polls'
 
 #URL patterns are equated to a list and this list contains different paths/routes
 urlpatterns = [ 
